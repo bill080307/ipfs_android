@@ -38,8 +38,6 @@ public class Util implements _Ipfs {
             e.printStackTrace();
         } catch (IPFS.SockManagerException e) {
             e.printStackTrace();
-        } catch (IPFS.RepoOpenException e) {
-            e.printStackTrace();
         } catch (IPFS.NodeStartException e) {
             e.printStackTrace();
         }
@@ -92,7 +90,7 @@ public class Util implements _Ipfs {
     }
     public void getAsyn(String url) {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url(url).build().;
+        Request request = new Request.Builder().url(url).build();
         Call call = client.newCall(request);
         call.enqueue(new Callback() {
             @Override
