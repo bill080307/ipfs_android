@@ -34,6 +34,8 @@ public class Util implements _Ipfs {
         try {
             ipfs= new IPFS(activity);
             ipfs.start();
+            ArrayList<JSONObject> jsonList2 = ipfs.newRequest("/swarm/connect").withArgument("/dns/ipfs.home.dlimba.top/tcp/64/p2p/QmWxACeyRtqCZwix8LzFwHhvkRqVpQ1cEWPN86xa7Y6moi").sendToJSONList();
+            Log.i("Connect", jsonList2.get(0).toString());
             return true;
         } catch (IPFS.ConfigCreationException e) {
             e.printStackTrace();
@@ -42,6 +44,12 @@ public class Util implements _Ipfs {
         } catch (IPFS.SockManagerException e) {
             e.printStackTrace();
         } catch (IPFS.NodeStartException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IPFS.ShellRequestException e) {
+            e.printStackTrace();
+        } catch (RequestBuilder.RequestBuilderException e) {
             e.printStackTrace();
         }
 
@@ -89,6 +97,7 @@ public class Util implements _Ipfs {
             out.put("RateIn", RateIn);
             out.put("RateOut", RateOut);
             out.put("peers", peers);
+            Log.i("peers", jsonList.get(0).getJSONArray("Peers").toString());
             return out;
         } catch (RequestBuilder.RequestBuilderException e) {
             e.printStackTrace();
@@ -173,6 +182,12 @@ public class Util implements _Ipfs {
         return jsonList.toString();
     }
 
+    @Override
+    public byte[] get_byte(String ipfspath) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException {
+        byte[] fetchedData = null;
+        fetchedData = ipfs.newRequest("/cat").withArgument(ipfspath).send();
+        return fetchedData;
+    }
 //    @Override
 //    public String get_updatejson(Context context) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException {
 //        String hash = this.resolvecache(App.updata_hash,context, "APK",App.ipfsgw);

@@ -43,6 +43,7 @@ import io.ipfs.videoshare.adpter.One_list_Adapter;
 import io.ipfs.videoshare.bean.UserHashBean;
 import io.ipfs.videoshare.erweima;
 import io.ipfs.videoshare.ipfs_util.StartIPFS;
+import io.ipfs.videoshare.ipfs_util.Util;
 import io.ipfs.videoshare.one.Type_list;
 import io.ipfs.videoshare.updata_bean;
 import ipfs.gomobile.android.IPFS;

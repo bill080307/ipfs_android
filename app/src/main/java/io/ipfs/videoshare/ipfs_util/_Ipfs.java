@@ -24,7 +24,7 @@ public interface _Ipfs {
 //    String resolvecache(String ipns, Context context, String lable, String ipfsgw) throws IPFS.ShellRequestException, JSONException, RequestBuilder.RequestBuilderException;
     String resolve(String ipns) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException;
     String get_json(String ipfspath) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException;
-
+    byte[] get_byte(String ipfspath) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException;
 //    String get_updatejson(Context context) throws IPFS.ShellRequestException, RequestBuilder.RequestBuilderException, JSONException;
     public String resolve_by_gateway(String ipns, String gateway);
     public String get_content_by_gateway(String ipfspath, String gateway);

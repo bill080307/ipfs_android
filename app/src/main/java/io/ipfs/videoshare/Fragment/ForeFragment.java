@@ -42,6 +42,7 @@ import io.ipfs.videoshare.ipfs_util.StartIPFS;
 import io.ipfs.videoshare.ipfs_util.Util;
 import io.ipfs.videoshare.updata_bean;
 import ipfs.gomobile.android.IPFS;
+import ipfs.gomobile.android.RequestBuilder;
 
 /**
  * Created by Administrator on 2020/3/30.
@@ -73,7 +74,22 @@ public class ForeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment4, null);
         ButterKnife.inject(this, view);
 
-
+        try {
+            String a = Loading.util.get_content_by_gateway("/ipfs/QmbAHAkPgnjd1SAV6yuSFYEzM4LFWffvtmwjR73tHp2YA5/6795735799976480013.mp4.json",App.default_getway);
+            Log.i("Connect", a);
+            String b = Loading.util.get_json("/ipfs/QmbAHAkPgnjd1SAV6yuSFYEzM4LFWffvtmwjR73tHp2YA5/6795735799976480013.mp4.json");
+            Log.i("Connect", b);
+            String c = Loading.util.resolve_by_gateway("QmPsDMaNfxVCWDLTtBheVT61r5ohiiuSNU5aBMMDmjBsTh",App.default_getway);
+            Log.i("Connect", c);
+            byte[] d = Loading.util.get_byte("/ipfs/QmbfZQ2Zgc1YdkjBkNebmKqszt9kMyafNE8gkJPoqeDD7i");
+            Log.i("Connect", c);
+        } catch (IPFS.ShellRequestException e) {
+            e.printStackTrace();
+        } catch (RequestBuilder.RequestBuilderException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         //new StartIPFS(this).execute();
 
         id.setText("My ID:  "+ Loading.util.get_id());
